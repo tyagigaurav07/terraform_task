@@ -35,13 +35,6 @@ terraform state list
 # Destroy resources
 terraform destroy -auto-approve
 ```
-
----
-
-## Notes
-- I have removed provider caches and state files from this repo so it stays clean.
-- If you cannot run Docker locally (virtualization missing), you can run these commands on any machine / cloud VM where Docker is available.
-
 ---
 
 **Author:** Gaurav Tyagi
