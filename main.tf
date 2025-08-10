@@ -7,18 +7,17 @@ terraform {
   }
 }
 
-provider "docker" {
-  host = "npipe:////./pipe/docker_engine"
+provider "docker" {}
+
+# Pull a lightweight nginx image
+resource "docker_image" "nginx_image" {
+  name = "nginx:alpine"
 }
 
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = false
-}
-
-resource "docker_container" "nginx_container" {
-  name  = "nginx_server"
-  image = docker_image.nginx.image_id
+# Create a container with a unique name
+resource "docker_container" "gtyagi_nginx" {
+  name  = "gtyagi-nginx-container"
+  image = docker_image.nginx_image.latest
 
   ports {
     internal = 80
