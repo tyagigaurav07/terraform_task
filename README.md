@@ -1,83 +1,47 @@
 # Terraform Docker Container Provisioning
 
-This project demonstrates how to use **Terraform** as an Infrastructure as Code (IaC) tool to provision a **local Docker container**.
+**Objective:** Provision a Docker container using Terraform's Docker provider.
 
 ---
 
-## 🧾 Task Overview
-
-**Objective:** Provision a local Docker container using Terraform.  
-**Tools Used:**  
-- Terraform v1.7.5  
-- Docker Desktop  
-- VS Code  
-- Git & GitHub  
+## What this repo contains
+- `main.tf` — Terraform configuration to create a Docker image and container.
+- `execution-log.txt` — sample execution log (init, plan, apply, state, destroy).
+- `.gitignore` — ignores provider cache and state files.
 
 ---
 
-## 🛠️ What It Does
-
-- Pulls the official `nginx:latest` image from Docker Hub
-- Creates and runs a Docker container named `nginx_server`
-- Maps container port `80` to local port `8080`
-- Automatically manages infrastructure using Terraform
+## Tools required
+- Terraform (v1.x recommended)
+- Docker (engine running locally) — *if Docker cannot run on your machine, the Terraform code is still valid and can be applied on any machine with Docker.*
 
 ---
 
-## 📂 Files Included
-
-| File | Description |
-|------|-------------|
-| `main.tf` | Terraform configuration to provision Docker container |
-| `execution-log.txt` | Outputs from Terraform commands (`init`, `plan`, `apply`, `state`, `destroy`) |
-| `.terraform.lock.hcl` | Terraform dependency lock file |
-| `terraform.tfstate` | Tracks current infrastructure state |
-| `terraform.tfstate.backup` | Backup of the last state file |
-
----
-
-## 🚀 How to Run This Project
-
-### 1. Make sure Docker is running
-
-Start **Docker Desktop** before running Terraform.
-
-### 2. Initialize Terraform
+## Quick usage
 
 ```bash
+# Initialize terraform
 terraform init
 
-Preview the execution plan
+# See plan
 terraform plan
 
- Apply the configuration to create the container
- terraform apply
+# Apply (create resources)
+terraform apply -auto-approve
 
-Visit: http://localhost:8080
-You should see the Nginx Welcome Page.
-
-View Terraform-managed resources
+# Check state
 terraform state list
 
-Destroy the infrastructure
-terraform destroy
+# Destroy resources
+terraform destroy -auto-approve
+```
 
-🎯 Outcome
+---
 
-Learned how to provision infrastructure using Terraform
+## Notes
+- I have removed provider caches and state files from this repo so it stays clean.
+- If you cannot run Docker locally (virtualization missing), you can run these commands on any machine / cloud VM where Docker is available.
 
-Understood the concept of IaC (Infrastructure as Code)
+---
 
-Practiced working with Docker provider in Terraform
-
-Created and destroyed a Docker container automatically
-
-🔗 Author
-
-Name: Tezan
-
-GitHub Repo: Terraform_task
-
-
-
-
+**Author:** Gaurav Tyagi
